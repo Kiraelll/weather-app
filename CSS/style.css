@@ -1,0 +1,45 @@
+body {
+  max-width: 700px;
+  margin: 0 auto;
+}
+p {
+  padding: 0;
+  margin-bottom: 0;
+}
+a {
+  color: darkcyan;
+  text-decoration: none;
+}
+a:hover {
+    color: darkslategray;
+    text-decoration: none;
+  }
+
+.container {
+  color: darkslategray;
+  text-align: center;
+  font-family: "Petrona", serif;
+  background: rgb(226, 225, 225);
+}
+.input-group-btn {
+  position: absolute;
+  right: 15px;
+  z-index: 3;
+}
+.wether-conditions {
+  color: rgba(14, 85, 133, 0.911);
+  text-align: right;
+  font-size: small;
+}
+.city {
+  text-align: right;
+}
+.row {
+  background: rgb(226, 225, 225);
+}
+.bi-brightness-high {
+  color: rgba(14, 85, 133, 0.911);
+}
+.bi-cloud-sun {
+  color: rgba(14, 85, 133, 0.911);
+}
