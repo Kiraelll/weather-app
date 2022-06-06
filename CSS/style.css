@@ -11,15 +11,20 @@ a {
   text-decoration: none;
 }
 a:hover {
-    color: darkslategray;
-    text-decoration: none;
-  }
+  color: darkslategray;
+  text-decoration: none;
+}
 
 .container {
   color: darkslategray;
   text-align: center;
   font-family: "Petrona", serif;
   background: rgb(226, 225, 225);
+}
+.footer {
+  color: darkslategray;
+  font-family: "Petrona", serif;
+  margin-left: 50px;
 }
 .input-group-btn {
   position: absolute;
@@ -42,4 +47,8 @@ a:hover {
 }
 .bi-cloud-sun {
   color: rgba(14, 85, 133, 0.911);
+}
+.footer-link {
+  color: rgba(14, 85, 133, 0.911);
+  text-decoration: none;
 }
