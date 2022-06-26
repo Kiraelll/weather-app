@@ -12,8 +12,14 @@ let days = [
 let day = days[now.getDay()];
 date.innerHTML = `${day}`;
 let time = document.querySelector("#current-time");
-let hours = now.getUTCHours();
-let minutes = now.getUTCMinutes();
+let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 time.innerHTML = `${hours}:${minutes}`;
 
 function search(event) {
