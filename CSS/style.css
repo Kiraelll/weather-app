@@ -52,3 +52,7 @@ a:hover {
   color: rgba(14, 85, 133, 0.911);
   text-decoration: none;
 }
+.weather-temperature .active {
+  color: darkslategray;
+  cursor: default;
+}

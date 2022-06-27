@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="CSS/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Weather</title>
     <link
@@ -19,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Petrona:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="CSS/style.css" />
   </head>
   <body>
     <div class="container border m-5 mb-0 p-4 rounded">
@@ -51,11 +51,9 @@
             </span>
           </form>
           <div class="wether-conditions">
-            <span class="humidity"
-              >Humidity: <span id="humidity">54</span>%</span
-            >
+            <span class="humidity">Humidity: <span id="humidity"></span>%</span>
             <br />
-            <span class="wind">Wind: <span id="wind">14</span> km / h</span>
+            <span class="wind">Wind: <span id="wind"></span> km / h</span>
           </div>
         </div>
         <div class="col-6">
@@ -63,22 +61,13 @@
             <div class="row">
               <div class="col-12">
                 <div class="card-body">
-                  <h1 class="card-title">Alicante</h1>
-                  <p class="card-text">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      fill="currentColor"
-                      class="bi bi-brightness-high"
-                      viewBox="0 0 16 16"
+                  <h1 class="card-title" id="city"></h1>
+                  <p class="card-text weather-temperature">
+                    <img src="" alt="" id="icon" />
+                    <span id="temperature"></span>
+                    <a class="text-decoration-none active" href="#" id="celsius"
+                      >°C</a
                     >
-                      <path
-                        d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
-                      />
-                    </svg>
-                    <span id="temperature">27</span>
-                    <a class="text-decoration-none" href="#" id="celsius">°C</a>
                     <span>|</span>
                     <a class="text-decoration-none" href="#" id="fahrenheit"
                       >°F</a
@@ -86,10 +75,12 @@
                   </p>
                   <div class="current-values">
                     <p>
-                      <span id="current-date"> Thursday</span>
-                      <span id="current-time"> 18:32 </span>
+                      <span>
+                        Last updated:
+                        <span id="date"> </span>
+                      </span>
                       <br />
-                      <span class="card-text" id="current-weather">Clear</span>
+                      <span class="card-text" id="current-weather"></span>
                     </p>
                   </div>
                 </div>
