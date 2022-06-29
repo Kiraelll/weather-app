@@ -33,6 +33,12 @@ function search(city) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
   axios.get(`${apiUrl}`).then(showTemperature);
 }
+function getForecast(coordinates) {
+  let apiKey = "a65639754880304ce961a06a55d37ed0";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
@@ -55,6 +61,8 @@ function showTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function showWeather(position) {
@@ -86,6 +94,53 @@ function displayFahrenheitTemperature(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    celsiusForecastMinTemperature = Math.round(forecastDay.temp.min);
+    celsiusForecastMaxTemperature = Math.round(forecastDay.temp.max);
+    if (index < 6) {
+      forecastHTML += ` <div class="col-2">
+   <div class="weather-forcast-date">${formatDay(forecastDay.dt)}</div>
+   <img
+     src="http://openweathermap.org/img/wn/${
+       forecastDay.weather[0].icon
+     }@2x.png"
+     alt=""
+     width="42"
+   />
+   <div class="weather-forecast-temperatures">
+     <span class="weather-forecast-temperature-max">
+       ${celsiusForecastMaxTemperature}°
+     </span>
+     <span class="weather-forecast-temperature-min">
+       ${celsiusForecastMinTemperature}°
+     </span>
+   </div>
+ </div>
+      `;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tusday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", getCity);
@@ -102,3 +157,5 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 search("New York");
 let celsiusTemperature = null;
+let celsiusForecastMinTemperature = null;
+let celsiusForecastMaxTemperature = null;
